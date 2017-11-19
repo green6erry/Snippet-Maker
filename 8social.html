@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snippet Maker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=3, maximum-scale=1">
+
+</head>
+<body ng-app="app" ng-controller="PageController">
+<h1>Snippet Maker</h1>
+
+    <p>{{school.label}}: <input type="text" ng-model="school.name" /></p>
+    <p ng-repeat="social in socials">{{social.label}}: <input type="text" ng-model="social.url" /></p>
+
+<hr>
+
+<form>
+    <h3>Code</h3> <p>Click in the textbox and it will automatically copy the contents to your clipboard.</p><span style="color: green; font-family: arial;" ng-show="showMe">Code has been copied!</span><br />
+
+    <textarea id="html" rows="30" cols="80" ng-click="showFunc()" onclick="javascript:this.form.html.focus();this.form.html.select();document.execCommand('copy');">
+{{css[0]}}
+    {{li[0]}}{{socials[0].url}}{{li[1]}}{{socials[0].class}}{{li[2]}}{{socials[0].alt}} for{{school.name}}{{li[3]}}
+    {{li[0]}}{{socials[1].url}}{{li[1]}}{{socials[1].class}}{{li[2]}}{{socials[1].alt}} for{{school.name}}{{li[3]}}
+    {{li[0]}}{{socials[2].url}}{{li[1]}}{{socials[2].class}}{{li[2]}}{{socials[2].alt}} for{{school.name}}{{li[3]}}
+    {{li[0]}}{{socials[3].url}}{{li[1]}}{{socials[3].class}}{{li[2]}}{{socials[3].alt}} for{{school.name}}{{li[3]}}
+    {{li[0]}}{{socials[4].url}}{{li[1]}}{{socials[4].class}}{{li[2]}}{{socials[4].alt}} for{{school.name}}{{li[3]}}
+    {{li[0]}}{{socials[5].url}}{{li[1]}}{{socials[5].class}}{{li[2]}}{{socials[5].alt}} for{{school.name}}{{li[3]}}
+    {{li[0]}}{{socials[6].url}}{{li[1]}}{{socials[6].class}}{{li[2]}}{{socials[6].alt}} for{{school.name}}{{li[3]}}
+{{css[1]}}
+</textarea>
+    <p>Click in the textbox and it will automatically copy the contents to your clipboard.</p><span style="color: green; font-family: arial;" ng-show="showMeToo">Code has been copied!</span><br />
+
+    <xmp  id="htmlToo"  ng-click="showFuncToo()" onclick="javascript:this.form.htmlToo.focus();this.form.htmlToo.select();document.execCommand('copy');">
+        {{css[0]}}
+        {{li[0]}}{{socials[0].url}}{{li[1]}}{{socials[0].class}}{{li[2]}}{{socials[0].alt}} for{{school.name}}{{li[3]}}
+        {{li[0]}}{{socials[1].url}}{{li[1]}}{{socials[1].class}}{{li[2]}}{{socials[1].alt}} for{{school.name}}{{li[3]}}
+        {{li[0]}}{{socials[2].url}}{{li[1]}}{{socials[2].class}}{{li[2]}}{{socials[2].alt}} for{{school.name}}{{li[3]}}
+        {{li[0]}}{{socials[3].url}}{{li[1]}}{{socials[3].class}}{{li[2]}}{{socials[3].alt}} for{{school.name}}{{li[3]}}
+        {{li[0]}}{{socials[4].url}}{{li[1]}}{{socials[4].class}}{{li[2]}}{{socials[4].alt}} for{{school.name}}{{li[3]}}
+        {{li[0]}}{{socials[5].url}}{{li[1]}}{{socials[5].class}}{{li[2]}}{{socials[5].alt}} for{{school.name}}{{li[3]}}
+        {{li[0]}}{{socials[6].url}}{{li[1]}}{{socials[6].class}}{{li[2]}}{{socials[6].alt}} for{{school.name}}{{li[3]}}
+        {{css[1]}}
+    </xmp>
+</form>
+<br />
+<hr>
+
+
+<section>
+    <h3>Preview</h3>
+        <p>NOTE: This is to give you a sense of what it will look like, but you will still need to go into the code to remove any < li > elements you want to remove.</p>
+
+    <div class="preview-container" style="position: fixed;">
+        <style>
+            li {list-style: none;display: inline;}
+            .social {cursor: pointer;height: 200px;width: 230px;display: inline-block;zoom: 21%;}
+            .facebook {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat 0 -30px;}
+            .twitter {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -300px -30px;}
+            .instagram {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -600px -30px;}
+            .youtube {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -900px -30px;}
+            .linkedin {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -1200px -30px;}
+            .spotify {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -1800px -30px;}
+            .snapchat {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -2100px -30px;}
+            .snapchat_alt {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -2400px -30px;}
+        </style>
+        <center>
+            <ul>
+                <li ng-repeat="social in socials"><a href='{{social.url}}' ng-show="social.url" class='{{social.class}} social' alt='{{social.name}} {{school.name}}'></a></li>
+            </ul>
+        </center>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+<script>
+    var app = angular.module('app', []);
+    app.controller("PageController", function($scope) {
+        $scope.css = [
+            "<style>\n" +
+            "   li {list-style: none; display: inline;}\n" +
+            "   .social {cursor: pointer;height: 200px;width: 230px;display: inline-block;zoom: 21%;}\n" +
+            "   .facebook {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat 0 -30px;}\n" +
+            "   .twitter {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -300px -30px;}\n" +
+            "   .instagram {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -600px -30px;}\n" +
+            "   .youtube {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -900px -30px;}\n" +
+            "   .linkedin {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -1200px -30px;}\n" +
+            "   .spotify {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -1800px -30px;}\n" +
+            "   .snapchat {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -2100px -30px;}\n" +
+            "   .snapchat_alt {background: url('http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png') no-repeat -2400px -30px;}\n" +
+            "</style>\n" +
+            "<center>\n" +
+            "   <ul>" ,
+            "   </ul>\n" +
+            "</center>"
+        ]
+        $scope.li = [
+            "<li><a href=''",
+            "' class='",
+            " social' alt='",
+            "'></a></li>"
+        ],
+        $scope.school = {
+            name: "",
+            label: "School",
+            icons: "http://www.fullmeasureed.com/wp-content/uploads/2017/11/sociallineSpace2.png",
+        };
+        $scope.socials= [{
+            label: "Facebook",
+            url: "",
+            class: "facebook",
+            background: "30px 0",
+            alt: "Facebook page",
+
+        }, {
+            label: "Twitter",
+            url: "",
+            class: "twitter",
+            background: "30px 0",
+            alt: "Twitter handle"
+        }, {
+            label: "Snapchat",
+            url: "",
+            class: "snapchat",
+            background: "30px 0",
+            alt: "Snapchat account"
+        }, {
+            label: "Snapchat Alt",
+            url: "",
+            class: "snapchat_alt",
+            background: "30px 0",
+            alt: "Snapchat account"
+        }, {
+            label: "YouTube",
+            url: "",
+            class: "youtube",
+            background: "30px 0",
+            alt: "YouTube page"
+        }, {
+            label: "LinkedIn",
+            url: "",
+            class: "linkedin",
+            background: "30px 0",
+            alt: "LinkedIn Profile"
+        }, {
+            label: "Instagram",
+            url: "",
+            class: "instagram",
+            background: "30px 0",
+            alt: "Instagram account"
+        }, {
+            label: "Spotify",
+            url: "",
+            class: "spotify",
+            background: "-1800px -30px",
+            alt: "Spotify profile"
+        }],
+            $scope.showFunc = function() {
+                $scope.showMe = !$scope.showMe;
+            },
+            $scope.showFuncToo = function() {
+                $scope.showMeToo = !$scope.showMeToo;
+            }
+    });
+</script>
+</body>
+</html>
